@@ -1,0 +1,6 @@
+.elements__container {
+  display: flex;
+  justify-content: space-between;
+  color: 000000;
+  max-width: 282px;
+}
