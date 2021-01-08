@@ -9,7 +9,10 @@
 
 @media screen and (max-width: 879px) {
   .profile__edit_btn {
+    margin: 6px 10px;
     width: 18px;
     height: 18px;
+    display: flex;
+    justify-content: center;
   }
 }

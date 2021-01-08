@@ -1,0 +1,9 @@
+.form__close_btn {
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -45px;
+  right: -20px;
+}

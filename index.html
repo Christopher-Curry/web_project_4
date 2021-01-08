@@ -18,27 +18,23 @@
       </header>
       <section class="profile">
         <div class="profile__container">
-          <div class="profile__description">
-            <img
-              src="./images/jacques.jpg"
-              alt="Jacques Cousteau"
-              class="profile__avatar"
-              style="margin: 0 auto"
-            />
-
-            <div class="profile__form">
-              <div class="profile__edit">
-                <h1 class="profile__title">Jacques Cousteau</h1>
-                <button class="profile__edit_btn">
-                  <img
-                    src="./images/Vector_edit.png"
-                    alt="pensil"
-                    class="profile__edit_sign"
-                  />
-                </button>
-              </div>
-              <p class="profile__subtitle">Explorer</p>
+          <img
+            src="./images/jacques.jpg"
+            alt="Jacques Cousteau"
+            class="profile__avatar"
+          />
+          <div class="profile__form">
+            <div class="profile__edit">
+              <h1 class="profile__title">Jacques Cousteau</h1>
+              <button class="profile__edit_btn" onclick="showForm()">
+                <img
+                  src="./images/Vector_edit.png"
+                  alt="pensil"
+                  class="profile__edit_sign"
+                />
+              </button>
             </div>
+            <p class="profile__subtitle">Explorer</p>
           </div>
           <button class="profile__add_btn">
             <img
@@ -145,5 +141,19 @@
       </section>
       <footer class="footer">&#169; 2020 Around The U.S.</footer>
     </div>
+    <form class="form">
+      <h3 class="form__title">Edit profile</h3>
+      <input type="text" class="form__name" id="fullName" /><br /><br /><br />
+      <input type="text" class="form__name" id="description" />
+      <button class="form__save_btn" onclick="return saveButton()">Save</button>
+      <div class="form__close_btn" onclick="closeForm()">
+        <img
+          src="./images/Close Icon (1).png"
+          alt="Close Button"
+          class="form__close_image"
+        />
+      </div>
+    </form>
+    <script src="forms.js"></script>
   </body>
 </html>

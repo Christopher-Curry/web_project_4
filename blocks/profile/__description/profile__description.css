@@ -1,9 +1,3 @@
 .profile__description {
   display: flex;
 }
-
-@media screen and (max-width: 879px) {
-  .profile__description {
-    display: block;
-  }
-}

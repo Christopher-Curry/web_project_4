@@ -2,3 +2,10 @@
   padding-left: 20px;
   padding-top: 62px;
 }
+
+@media screen and (max-width: 879px) {
+  .profile__form {
+    margin: 0 auto;
+    padding-top: 27px;
+  }
+}
