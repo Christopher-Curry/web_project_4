@@ -1,4 +1,4 @@
-.profile__add_btn {
+.profile__add-btn {
   border: 1px solid white;
   background-color: black;
   width: 150px;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 879px) {
-  .profile__add_btn {
+  .profile__add-btn {
     width: 282px;
     margin: 0 auto;
   }

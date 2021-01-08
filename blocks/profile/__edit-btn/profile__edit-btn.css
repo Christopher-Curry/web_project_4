@@ -1,4 +1,4 @@
-.profile__edit_btn {
+.profile__edit-btn {
   border: 1px solid white;
   background-color: black;
   width: 24px;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 879px) {
-  .profile__edit_btn {
+  .profile__edit-btn {
     margin: 6px 10px;
     width: 18px;
     height: 18px;
