@@ -1,0 +1,21 @@
+.form__description {
+  border-bottom: 1px solid #cccccc;
+  margin-left: 36px;
+  width: 358px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding-bottom: 10px;
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 400;
+  padding-left: 2px;
+}
+
+@media screen and (max-width: 879px) {
+  .form__description {
+    width: 238px;
+    margin-left: 22px;
+  }
+}

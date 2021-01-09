@@ -14,15 +14,10 @@
           alt="Around the U.S."
           class="header__logo"
         />
-        <hr class="header__line" />
       </header>
       <section class="profile">
         <div class="profile__container">
-          <img
-            src="./images/jacques.jpg"
-            alt="Jacques Cousteau"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar"></div>
           <div class="profile__form">
             <div class="profile__edit">
               <h1 class="profile__title">Jacques Cousteau</h1>
@@ -143,8 +138,8 @@
     </div>
     <form class="form">
       <h3 class="form__title">Edit profile</h3>
-      <input type="text" class="form__name" id="fullName" /><br /><br /><br />
-      <input type="text" class="form__name" id="description" />
+      <input type="text" class="form__full-name" id="fullName" />
+      <input type="text" class="form__description" id="description" />
       <button class="form__save-btn" onclick="return saveButton()">Save</button>
       <div class="form__close-btn" onclick="closeForm()">
         <img
@@ -154,6 +149,6 @@
         />
       </div>
     </form>
-    <script src="forms.js"></script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>

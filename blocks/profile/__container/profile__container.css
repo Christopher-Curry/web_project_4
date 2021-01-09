@@ -1,7 +1,8 @@
 .profile__container {
   display: grid;
-  grid-template-columns: 20% auto 17%;
-  padding-bottom: 48px;
+  grid-template-columns: 17% auto 17%;
+  padding-bottom: 50px;
+  padding-top: 36.25px;
 }
 
 @media screen and (max-width: 879px) {

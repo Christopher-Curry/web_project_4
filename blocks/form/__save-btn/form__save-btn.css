@@ -8,5 +8,17 @@
   width: 358px;
   height: 50px;
   margin-left: 36px;
-  margin-top: 48px;
+  margin-top: 46px;
+}
+
+@media screen and (max-width: 879px) {
+  .form__save-btn {
+    width: 238px;
+    height: 46px;
+    margin-left: 22px;
+    margin-bottom: 25px;
+    margin-top: 45px;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }

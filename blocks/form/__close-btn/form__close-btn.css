@@ -1,9 +1,14 @@
 .form__close-btn {
   background: transparent;
   border: none;
-  width: 40px;
-  height: 40px;
   position: absolute;
-  top: -45px;
-  right: -20px;
+  top: -49px;
+  right: -49px;
+}
+
+@media screen and (max-width: 879px) {
+  .form__close-btn {
+    right: 0;
+    top: -35px;
+  }
 }
