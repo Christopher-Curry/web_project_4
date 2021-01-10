@@ -1,9 +1,10 @@
 
 let form = document.querySelector(".form")
 let name = document.querySelector(".profile__title")
-let input = document.querySelector("#fullName")
+let input = document.querySelector(".form__full-name")
 let description = document.querySelector(".profile__subtitle")
-let descriptionInput = document.querySelector("#description")
+let descriptionInput = document.querySelector(".form__description")
+
 
 function showForm() {
     form.classList.add("form_active")

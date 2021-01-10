@@ -6,6 +6,11 @@
   right: -49px;
 }
 
+.form__close-btn:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 879px) {
   .form__close-btn {
     right: 0;

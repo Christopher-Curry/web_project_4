@@ -11,6 +11,11 @@
   margin-top: 46px;
 }
 
+.form__save-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 879px) {
   .form__save-btn {
     width: 238px;

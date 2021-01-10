@@ -89,7 +89,7 @@
           </div>
           <div class="elements__group">
             <img
-              src="./images/mick-haupt-aHdSqLAqCRA-unsplash (1).jpg"
+              src="./images/mick-haupt-aHdSqLAqCRA-unsplash.jpg"
               alt="tree next to a dirt road"
               class="elements__image"
             />
@@ -136,19 +136,26 @@
       </section>
       <footer class="footer">&#169; 2020 Around The U.S.</footer>
     </div>
+
     <form class="form">
-      <h3 class="form__title">Edit profile</h3>
-      <input type="text" class="form__full-name" id="fullName" />
-      <input type="text" class="form__description" id="description" />
-      <button class="form__save-btn" onclick="return saveButton()">Save</button>
-      <div class="form__close-btn" onclick="closeForm()">
-        <img
-          src="./images/Close Icon (1).png"
-          alt="Close Button"
-          class="form__close-image"
-        />
+      <div class="form__overlay"></div>
+      <div class="form__container">
+        <h3 class="form__title">Edit profile</h3>
+        <input type="text" class="form__full-name" placeholder="Name" />
+        <input type="text" class="form__description" placeholder="About me" />
+        <button class="form__save-btn" onclick="return saveButton()">
+          Save
+        </button>
+        <div class="form__close-btn" onclick="closeForm()">
+          <img
+            src="./images/closeIcon.png"
+            alt="Close Button"
+            class="form__close-image"
+          />
+        </div>
       </div>
     </form>
+
     <script src="scripts/script.js"></script>
   </body>
 </html>

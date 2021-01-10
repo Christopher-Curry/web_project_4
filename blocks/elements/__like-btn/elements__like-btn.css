@@ -1,3 +1,8 @@
 .elements__like-btn {
   padding-right: 20px;
 }
+
+.elements__like-btn:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

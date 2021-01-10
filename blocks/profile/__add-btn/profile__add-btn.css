@@ -6,6 +6,11 @@
   margin: 35px 0 0 0;
 }
 
+.profile__add-btn:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 879px) {
   .profile__add-btn {
     width: 282px;
