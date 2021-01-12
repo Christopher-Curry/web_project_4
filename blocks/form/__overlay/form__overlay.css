@@ -1,3 +1,8 @@
+/* Hey Nikita, 
+  I'm honestly not sure what "It should be a background color to form block without additional positioning" means.
+  Any chance you could give me more direction here?
+*/
+
 .form__overlay {
   position: fixed;
   width: 100%;
@@ -6,7 +11,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #000000;
+  /* background-color: #000000; */
   opacity: 0.5;
   z-index: 2;
 }

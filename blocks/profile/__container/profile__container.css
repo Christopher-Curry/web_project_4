@@ -9,5 +9,6 @@
   .profile__container {
     grid-template-columns: repeat(1, auto);
     padding-bottom: 36px;
+    padding-top: 42px;
   }
 }

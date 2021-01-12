@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="pages/index.css" />
     <title>Around the U.S.</title>
   </head>
-  <body>
+  <body class="body">
     <div class="page">
       <header class="header">
         <img
@@ -15,147 +15,135 @@
           class="header__logo"
         />
       </header>
-      <section class="profile">
-        <div class="profile__container">
-          <div class="profile__avatar"></div>
-          <div class="profile__form">
-            <div class="profile__edit">
-              <h1 class="profile__title">Jacques Cousteau</h1>
-              <button class="profile__edit-btn" onclick="showForm()">
-                <img
-                  src="./images/Vector_edit.png"
-                  alt="pensil"
-                  class="profile__edit-sign"
-                />
-              </button>
+      <main>
+        <section class="profile">
+          <div class="profile__container">
+            <div class="profile__avatar"></div>
+            <div class="profile__form">
+              <div class="profile__edit">
+                <h1 class="profile__title">Jacques Cousteau</h1>
+                <button type="button" class="profile__edit-btn">
+                  <img
+                    src="./images/Vector_edit.png"
+                    alt="pencil"
+                    class="profile__edit-sign"
+                  />
+                </button>
+              </div>
+              <p class="profile__subtitle">Explorer</p>
             </div>
-            <p class="profile__subtitle">Explorer</p>
-          </div>
-          <button class="profile__add-btn">
-            <img
-              src="./images/Vector.png"
-              alt="plus sign"
-              class="profile__plus-sign"
-            />
-          </button>
-        </div>
-      </section>
-      <section class="elements">
-        <div class="elements__grid">
-          <div class="elements__group">
-            <img
-              src="./images/andreas-weilguny-8rw95DOQxoQ-unsplash.jpg"
-              alt="rocky mountains"
-              class="elements__image"
-            />
-            <div class="elements__container">
-              <h2 class="elements__title">Rocky Mountains</h2>
+            <button type="button" class="profile__add-btn">
               <img
-                src="./images/Vector_heart_empty.svg"
-                alt="like button"
-                class="elements__like-btn"
+                src="./images/Vector.png"
+                alt="plus sign"
+                class="profile__plus-sign"
               />
-            </div>
+            </button>
           </div>
-          <div class="elements__group">
-            <img
-              src="./images/diego-gutierrez-NRn5rrBnH8w-unsplash.jpg"
-              alt="rock arches"
-              class="elements__image"
-            />
-            <div class="elements__container">
-              <h2 class="elements__title">Arches National Park</h2>
+        </section>
+        <section class="elements">
+          <ul class="elements__grid">
+            <li class="elements__group">
               <img
-                src="./images/Vector_heart_empty.svg"
-                alt="like button"
-                class="elements__like-btn"
+                src="./images/andreas-weilguny-8rw95DOQxoQ-unsplash.jpg"
+                alt="rocky mountains"
+                class="elements__image"
               />
-            </div>
-          </div>
-          <div class="elements__group">
-            <img
-              src="./images/evgeny-tchebotarev-ZPQE4XssoBc-unsplash.jpg"
-              alt="Golden Gate Bride"
-              class="elements__image"
-            />
-            <div class="elements__container">
-              <h2 class="elements__title">Golden Gate</h2>
+              <div class="elements__container">
+                <h2 class="elements__title">Rocky Mountains</h2>
+                <button type="button" class="elements__like-btn"></button>
+              </div>
+            </li>
+            <li class="elements__group">
               <img
-                src="./images/Vector_heart_empty.svg"
-                alt="like button"
-                class="elements__like-btn"
+                src="./images/diego-gutierrez-NRn5rrBnH8w-unsplash.jpg"
+                alt="rock arches"
+                class="elements__image"
               />
-            </div>
-          </div>
-          <div class="elements__group">
-            <img
-              src="./images/mick-haupt-aHdSqLAqCRA-unsplash.jpg"
-              alt="tree next to a dirt road"
-              class="elements__image"
-            />
-            <div class="elements__container">
-              <h2 class="elements__title">Hawaii</h2>
+              <div class="elements__container">
+                <h2 class="elements__title">Arches National Park</h2>
+                <button type="button" class="elements__like-btn"></button>
+              </div>
+            </li>
+            <li class="elements__group">
               <img
-                src="./images/Vector_heart_empty.svg"
-                alt="like button"
-                class="elements__like-btn"
+                src="./images/evgeny-tchebotarev-ZPQE4XssoBc-unsplash.jpg"
+                alt="Golden Gate Bride"
+                class="elements__image"
               />
-            </div>
-          </div>
-          <div class="elements__group">
-            <img
-              src="./images/parsoa-khorsand-xYlbGw5cVBE-unsplash.jpg"
-              alt="rock in the desert"
-              class="elements__image"
-            />
-            <div class="elements__container">
-              <h2 class="elements__title">Southwest Utah</h2>
+              <div class="elements__container">
+                <h2 class="elements__title">Golden Gate</h2>
+                <button type="button" class="elements__like-btn"></button>
+              </div>
+            </li>
+            <li class="elements__group">
               <img
-                src="./images/Vector_heart_empty.svg"
-                alt="like button"
-                class="elements__like-btn"
+                src="./images/mick-haupt-aHdSqLAqCRA-unsplash.jpg"
+                alt="tree next to a dirt road"
+                class="elements__image"
               />
-            </div>
-          </div>
-          <div class="elements__group">
-            <img
-              src="./images/subhasish-dutta-rK__TZvB4oM-unsplash.jpg"
-              alt="bride in background skateboarder in park"
-              class="elements__image"
-            />
-            <div class="elements__container">
-              <h2 class="elements__title">New York, NY</h2>
+              <div class="elements__container">
+                <h2 class="elements__title">Hawaii</h2>
+                <button type="button" class="elements__like-btn"></button>
+              </div>
+            </li>
+            <li class="elements__group">
               <img
-                src="./images/Vector_heart_empty.svg"
-                alt="like button"
-                class="elements__like-btn"
+                src="./images/parsoa-khorsand-xYlbGw5cVBE-unsplash.jpg"
+                alt="rock in the desert"
+                class="elements__image"
               />
-            </div>
-          </div>
-        </div>
-      </section>
-      <footer class="footer">&#169; 2020 Around The U.S.</footer>
+              <div class="elements__container">
+                <h2 class="elements__title">Southwest Utah</h2>
+                <button type="button" class="elements__like-btn"></button>
+              </div>
+            </li>
+            <li class="elements__group">
+              <img
+                src="./images/subhasish-dutta-rK__TZvB4oM-unsplash.jpg"
+                alt="bride in background skateboarder in park"
+                class="elements__image"
+              />
+              <div class="elements__container">
+                <h2 class="elements__title">New York, NY</h2>
+                <button type="button" class="elements__like-btn"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <p>&#169; 2020 Around The U.S.</p>
+      </footer>
     </div>
 
-    <form class="form">
+    <div class="form">
+      <!-- When I move the background color and opacity to the form class. Then the form modal has opacity applied to it which I don't want. Any suggestions on how to fix that? -->
       <div class="form__overlay"></div>
-      <div class="form__container">
+      <form class="form__container" method="GET" name="profile">
         <h3 class="form__title">Edit profile</h3>
-        <input type="text" class="form__full-name" placeholder="Name" />
-        <input type="text" class="form__description" placeholder="About me" />
-        <button class="form__save-btn" onclick="return saveButton()">
-          Save
-        </button>
-        <div class="form__close-btn" onclick="closeForm()">
+        <input
+          type="text"
+          class="form__full-name"
+          placeholder="Name"
+          name="full_name"
+        />
+        <input
+          type="text"
+          class="form__description"
+          placeholder="About me"
+          name="about_me"
+        />
+        <button type="submit" class="form__save-btn">Save</button>
+        <button class="form__close-btn" type="reset">
           <img
             src="./images/closeIcon.png"
             alt="Close Button"
             class="form__close-image"
           />
-        </div>
-      </div>
-    </form>
-
+        </button>
+      </form>
+    </div>
     <script src="scripts/script.js"></script>
   </body>
 </html>

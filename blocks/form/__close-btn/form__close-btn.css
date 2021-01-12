@@ -1,4 +1,5 @@
 .form__close-btn {
+  background-image: url(../../../images/closeIcon.png);
   background: transparent;
   border: none;
   position: absolute;
@@ -13,7 +14,7 @@
 
 @media screen and (max-width: 879px) {
   .form__close-btn {
-    right: 0;
-    top: -35px;
+    right: -8px;
+    top: -55px;
   }
 }

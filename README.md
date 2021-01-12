@@ -6,6 +6,10 @@ I'm testing branches as well as using JavaScript that interacts with the HTML an
 
 The project now has correct modular mobile layout, pixel perfect has been utilized, remove/add classlist are used
 
+## Techniques and Technologies
+
+I used flexbox, css grid for the images. I also used JS, HTML, and CSS to create the page.
+
 ### A description of the project.
 
 The point of this website is to practice using JavaScript and work more with branches in Git. I work in the features/ branches and merge those changes into the developer branch and finally push that code into main. Once I get feedback I use hotfix branches and merge into main. JavaScript I'm using to like images and to create functionality to a form.

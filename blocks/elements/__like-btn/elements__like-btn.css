@@ -1,5 +1,11 @@
 .elements__like-btn {
-  padding-right: 20px;
+  padding-right: 55px;
+  padding-left: 0;
+  background-image: url(../../../images/Vector_heart_empty.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
 }
 
 .elements__like-btn:hover {
