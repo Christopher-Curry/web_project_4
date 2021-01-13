@@ -6,6 +6,7 @@
   background-position: center;
   background-color: transparent;
   border: none;
+  outline: none;
 }
 
 .elements__like-btn:hover {
