@@ -1,0 +1,20 @@
+.popup__header {
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29.05px;
+  padding-left: 36px;
+  padding-top: 34px;
+  margin: 0;
+  padding-bottom: 48px;
+}
+
+@media screen and (max-width: 879px) {
+  .popup__header {
+    padding-left: 22px;
+    padding-bottom: 73px;
+    padding-top: 25px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

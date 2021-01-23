@@ -42,74 +42,7 @@
           </div>
         </section>
         <section class="elements">
-          <ul class="elements__grid">
-            <li class="elements__group">
-              <img
-                src="./images/andreas-weilguny-8rw95DOQxoQ-unsplash.jpg"
-                alt="rocky mountains"
-                class="elements__image"
-              />
-              <div class="elements__container">
-                <h2 class="elements__title">Rocky Mountains</h2>
-                <button type="button" class="elements__like-btn"></button>
-              </div>
-            </li>
-            <li class="elements__group">
-              <img
-                src="./images/diego-gutierrez-NRn5rrBnH8w-unsplash.jpg"
-                alt="rock arches"
-                class="elements__image"
-              />
-              <div class="elements__container">
-                <h2 class="elements__title">Arches National Park</h2>
-                <button type="button" class="elements__like-btn"></button>
-              </div>
-            </li>
-            <li class="elements__group">
-              <img
-                src="./images/evgeny-tchebotarev-ZPQE4XssoBc-unsplash.jpg"
-                alt="Golden Gate Bride"
-                class="elements__image"
-              />
-              <div class="elements__container">
-                <h2 class="elements__title">Golden Gate</h2>
-                <button type="button" class="elements__like-btn"></button>
-              </div>
-            </li>
-            <li class="elements__group">
-              <img
-                src="./images/mick-haupt-aHdSqLAqCRA-unsplash.jpg"
-                alt="tree next to a dirt road"
-                class="elements__image"
-              />
-              <div class="elements__container">
-                <h2 class="elements__title">Hawaii</h2>
-                <button type="button" class="elements__like-btn"></button>
-              </div>
-            </li>
-            <li class="elements__group">
-              <img
-                src="./images/parsoa-khorsand-xYlbGw5cVBE-unsplash.jpg"
-                alt="rock in the desert"
-                class="elements__image"
-              />
-              <div class="elements__container">
-                <h2 class="elements__title">Southwest Utah</h2>
-                <button type="button" class="elements__like-btn"></button>
-              </div>
-            </li>
-            <li class="elements__group">
-              <img
-                src="./images/subhasish-dutta-rK__TZvB4oM-unsplash.jpg"
-                alt="bride in background skateboarder in park"
-                class="elements__image"
-              />
-              <div class="elements__container">
-                <h2 class="elements__title">New York, NY</h2>
-                <button type="button" class="elements__like-btn"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="elements__grid"></ul>
         </section>
       </main>
       <footer class="footer">
@@ -142,6 +75,45 @@
         </button>
       </form>
     </div>
+    <div class="popup">
+      <form class="popup__container" method="GET" name="image">
+        <h3 class="popup__header">New place</h3>
+        <input
+          type="text"
+          class="popup__title"
+          placeholder="Title"
+          name="Link_title"
+        />
+        <input
+          type="text"
+          class="popup__link"
+          placeholder="Image link"
+          name="Url_address"
+        />
+        <button type="submit" class="popup__create-btn">Create</button>
+        <button class="popup__close-btn" type="reset">
+          <img
+            src="./images/closeIcon.png"
+            alt="Close Button"
+            class="popup__close-image"
+          />
+        </button>
+      </form>
+    </div>
+    <template class="card">
+      <li class="elements__group">
+        <img
+          src="./images/andreas-weilguny-8rw95DOQxoQ-unsplash.jpg"
+          alt="rocky mountains"
+          class="elements__image"
+        />
+        <img src="./images/Trash.svg" alt="Trash Can" class="elements__trash" />
+        <div class="elements__container">
+          <h2 class="elements__title">Rocky Mountains</h2>
+          <button type="button" class="elements__like-btn"></button>
+        </div>
+      </li>
+    </template>
     <script src="scripts/script.js"></script>
   </body>
 </html>
