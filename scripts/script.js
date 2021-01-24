@@ -13,6 +13,8 @@ let createCard = document.querySelector(".popup__create-btn");
 let popupTitle = document.querySelector(".popup__title");
 let urlLink = document.querySelector(".popup__link");
 let elements = document.querySelector(".elements");
+let image = document.querySelector(".image");
+let imageClose = document.querySelector(".image__close-btn");
 
 const initialCards = [
   {
@@ -54,6 +56,7 @@ function elementImages(newTitle, url) {
   let heart = clone
     .querySelector(".elements__like-btn")
     .addEventListener("click", function (evt) {
+      evt.stopPropagation();
       evt.target.classList.toggle("elements__like-btn_active");
     });
 
@@ -65,9 +68,24 @@ function elementImages(newTitle, url) {
   let lastTrash = firstCard
     .querySelector(".elements__trash")
     .addEventListener("click", function (evt) {
+      evt.stopPropagation();
       firstCard.remove();
       console.log("clicked");
     });
+
+  firstCard.addEventListener("click", function (evt) {
+    let image = document.querySelector(".image");
+    image.classList.add("image_active");
+
+    let title = firstCard.querySelector(".elements__title").textContent;
+    let imageTitle = document.querySelector(".image__title");
+    imageTitle.textContent = title;
+
+    // change the source of the image
+    let src = firstCard.querySelector(".elements__image").src;
+    let srcPicture = document.querySelector(".image__popup");
+    srcPicture.src = src;
+  });
 }
 
 for (let i = 0; i < initialCards.length; i++) {
@@ -100,6 +118,10 @@ function endPopup() {
   popup.classList.remove("popup_active");
 }
 
+function imageEnd() {
+  image.classList.remove("image_active");
+}
+
 function createButton(evt) {
   evt.preventDefault();
   let newTitle = popupTitle.value;
@@ -108,6 +130,7 @@ function createButton(evt) {
   endPopup();
 }
 
+imageClose.addEventListener("click", imageEnd);
 createCard.addEventListener("click", createButton);
 addButton.addEventListener("click", showPopup);
 closePopup.addEventListener("click", endPopup);

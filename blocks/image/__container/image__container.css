@@ -1,0 +1,13 @@
+.image__container {
+  position: relative;
+  background-color: white;
+  height: 540px;
+  z-index: 3;
+}
+
+@media screen and (max-width: 879px) {
+  .image__container {
+    width: 240px;
+    height: 299px;
+  }
+}
