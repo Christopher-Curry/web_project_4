@@ -7,7 +7,6 @@
 @import url(./__container/form__container.css);
 
 .form {
-  display: none;
   position: fixed;
   justify-content: center;
   align-items: center;

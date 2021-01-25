@@ -4,7 +4,6 @@
 @import url(./__title/image__title.css);
 
 .image {
-  display: none;
   position: fixed;
   justify-content: center;
   align-items: center;
