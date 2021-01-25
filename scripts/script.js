@@ -3,7 +3,7 @@ const name = document.querySelector(".profile__title");
 const nameInput = document.querySelector(".form__full-name");
 const description = document.querySelector(".profile__subtitle");
 const descriptionInput = document.querySelector(".form__description");
-const closeFormButton = document.querySelector(".form__close-btn");
+const closeFormButton = document.querySelector(".popup__close-btn_popup");
 const editButton = document.querySelector(".profile__edit-btn");
 const submitForm = document.querySelector(".form__container");
 const profilePopup = document.querySelector(".profile-popup");
@@ -14,7 +14,7 @@ const popupTitle = document.querySelector(".popup__title");
 const urlLink = document.querySelector(".popup__link");
 const elements = document.querySelector(".elements");
 const image = document.querySelector(".image");
-const imageCloseButton = document.querySelector(".image__close-btn");
+const imageCloseButton = document.querySelector(".popup__close-btn_form");
 const cardsList = document.querySelector(".elements__grid");
 const imageTitle = document.querySelector(".image__title");
 const srcPicture = document.querySelector(".image__popup");
@@ -92,7 +92,7 @@ function closePopup(popup) {
 
 for (let i = 0; i < initialCards.length; i++) {
   const currentCard = initialCards[i];
-  let clone = createCard(currentCard.newTitle, currentCard.url);
+  const clone = createCard(currentCard.newTitle, currentCard.url);
   cardsList.prepend(clone);
 }
 
@@ -111,18 +111,18 @@ function saveButton(evt) {
 
 function createButton(evt) {
   evt.preventDefault();
-  let newTitle = popupTitle.value;
-  let url = urlLink.value;
-  let clone = createCard(newTitle, url);
+  const newTitle = popupTitle.value;
+  const url = urlLink.value;
+  const clone = createCard(newTitle, url);
   cardsList.prepend(clone);
   closePopup(profilePopup);
 }
 
-editButton.addEventListener("click", () => openPopup(form));
-closeFormButton.addEventListener("click", () => closePopup(form));
+editButton.addEventListener("click", () => showForm(form));
+closePopupButton.addEventListener("click", () => closePopup(form));
 
 addButton.addEventListener("click", () => openPopup(profilePopup));
-closePopupButton.addEventListener("click", () => closePopup(profilePopup));
+closeFormButton.addEventListener("click", () => closePopup(profilePopup));
 
 imageCloseButton.addEventListener("click", () => closePopup(image));
 createCardButton.addEventListener("click", createButton);

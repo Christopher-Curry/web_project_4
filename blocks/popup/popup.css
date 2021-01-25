@@ -1,3 +1,5 @@
+@import url(./__close-btn/popup__close-btn.css);
+
 .popup {
   display: none;
 }
