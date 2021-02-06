@@ -53,17 +53,29 @@
       <form class="form__container" method="GET" name="profile">
         <h3 class="form__title">Edit profile</h3>
         <input
+          id="test"
           type="text"
           class="form__full-name"
           placeholder="Name"
           name="full_name"
+          minlength="2"
+          maxlength="40"
+          required
         />
+        <span id="test-error" class="form__full-name_span_error">Error</span>
         <input
+          id="form__description"
           type="text"
           class="form__description"
           placeholder="About me"
           name="about_me"
+          minlength="2"
+          maxlength="200"
+          required
         />
+        <span id="form__description-error" class="form__full-name_span_error"
+          >Error</span
+        >
         <button type="submit" class="form__save-btn">Save</button>
         <button class="popup__close-btn" type="reset">
           <img
@@ -75,13 +87,14 @@
       </form>
     </div>
     <div class="profile-popup popup">
-      <form class="popup__container" method="GET" name="image">
+      <form class="popup__container" method="GET" name="image" novalidate>
         <h3 class="popup__header">New place</h3>
         <input
           type="text"
           class="popup__title"
           placeholder="Title"
           name="Link_title"
+          minlength="2"
         />
         <input
           type="text"
@@ -133,5 +146,6 @@
       </li>
     </template>
     <script src="scripts/script.js"></script>
+    <script src="scripts/validate.js"></script>
   </body>
 </html>
