@@ -1,0 +1,10 @@
+.form__span_error_styling {
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  color: #ff0000;
+  margin-left: 38px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  margin-top: 5px;
+  width: 358px;
+}

@@ -10,12 +10,14 @@ const profilePopup = document.querySelector(".form");
 const profilePopupName = document.querySelector(".form__full-name");
 const profilePopupDescription = document.querySelector(".form__description");
 const profilePopupForm = document.querySelector(".form__container");
+const profilePopupCreateButton = document.querySelector(".form__save-btn");
 const profilePopupCloseButton = document.querySelector(".popup__close-btn");
 
 /* New Card DOM elements */
 const newCardPopup = document.querySelector(".profile-popup");
 const newCardTitle = document.querySelector(".popup__title");
 const newCardLink = document.querySelector(".popup__link");
+const newCardForm = document.querySelector(".popup__container");
 const newCardCreateButton = document.querySelector(".popup__create-btn");
 const newCardCloseButton = document.querySelector(".popup__close-btn_popup");
 
@@ -105,6 +107,7 @@ for (let i = 0; i < initialCards.length; i++) {
 function showForm() {
   profilePopupName.value = name.textContent;
   profilePopupDescription.value = description.textContent;
+  toggleButtonState(profilePopupForm, profilePopupCreateButton);
   openPopup(profilePopup);
 }
 
@@ -123,6 +126,16 @@ function createButton(evt) {
   cardsList.prepend(clone);
   closePopup(newCardPopup);
 }
+
+function toggleButtonState(form, buttonElement) {
+  if (!form.checkValidity()) {
+    buttonElement.classList.add("profile-popup__create-btn_disabled");
+  } else {
+    buttonElement.classList.remove("profile-popup__create-btn_disabled");
+  }
+}
+
+toggleButtonState(newCardForm, newCardCreateButton);
 
 document.body.addEventListener("keydown", function (evt) {
   if (evt.key === "Escape") {

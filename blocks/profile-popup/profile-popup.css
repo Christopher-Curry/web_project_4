@@ -4,6 +4,7 @@
 @import url(./__header/popup__header.css);
 @import url(./__link/popup__link.css);
 @import url(./__title/popup__title.css);
+@import url(./__create-btn/_disabled/profile-popup__create-btn_disabled.css);
 
 .profile-popup {
   position: fixed;

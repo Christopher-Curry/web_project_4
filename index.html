@@ -50,32 +50,45 @@
       </footer>
     </div>
     <div class="form popup">
-      <form class="form__container" method="GET" name="profile">
+      <!-- Edit Profile Form -->
+      <form class="form__container" method="GET" name="profile" novalidate>
         <h3 class="form__title">Edit profile</h3>
-        <input
-          id="test"
-          type="text"
-          class="form__full-name"
-          placeholder="Name"
-          name="full_name"
-          minlength="2"
-          maxlength="40"
-          required
-        />
-        <span id="test-error" class="form__full-name_span_error">Error</span>
-        <input
-          id="form__description"
-          type="text"
-          class="form__description"
-          placeholder="About me"
-          name="about_me"
-          minlength="2"
-          maxlength="200"
-          required
-        />
-        <span id="form__description-error" class="form__full-name_span_error"
-          >Error</span
-        >
+        <label>
+          <input
+            id="full-name"
+            type="text"
+            class="form__full-name"
+            placeholder="Name"
+            name="full_name"
+            minlength="2"
+            maxlength="40"
+            required
+          />
+          <div
+            id="full-name-error"
+            class="form__span_error form__span_error_styling"
+          >
+            Error
+          </div>
+        </label>
+        <label>
+          <input
+            id="form__description"
+            type="text"
+            class="form__description"
+            placeholder="About me"
+            name="about_me"
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <div
+            id="form__description-error"
+            class="form__span_error form__span_error_styling"
+          >
+            Error
+          </div>
+        </label>
         <button type="submit" class="form__save-btn">Save</button>
         <button class="popup__close-btn" type="reset">
           <img
@@ -86,22 +99,41 @@
         </button>
       </form>
     </div>
+    <!-- New Card Form -->
     <div class="profile-popup popup">
       <form class="popup__container" method="GET" name="image" novalidate>
         <h3 class="popup__header">New place</h3>
-        <input
-          type="text"
-          class="popup__title"
-          placeholder="Title"
-          name="Link_title"
-          minlength="2"
-        />
-        <input
-          type="text"
-          class="popup__link"
-          placeholder="Image link"
-          name="Url_address"
-        />
+        <label>
+          <input
+            id="popup__title"
+            type="text"
+            class="popup__title"
+            placeholder="Title"
+            name="Link_title"
+            minlength="1"
+            maxlength="30"
+            required
+          />
+          <div
+            id="popup__title-error"
+            class="form__span_error form__span_error_styling"
+          >
+            Error
+          </div>
+        </label>
+        <label>
+          <input
+            id="url"
+            type="url"
+            class="popup__link"
+            placeholder="Image link"
+            name="Url_address"
+            required
+          />
+          <div id="url-error" class="form__span_error form__span_error_styling">
+            Error
+          </div>
+        </label>
         <button type="submit" class="popup__create-btn">Create</button>
         <button class="popup__close-btn popup__close-btn_popup" type="reset">
           <img

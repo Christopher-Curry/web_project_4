@@ -4,7 +4,7 @@
   border-right: none;
   border-top: none;
   margin-left: 36px;
-  margin-bottom: 26px;
+  /* margin-bottom: 5px; */
   width: 358px;
   padding-bottom: 10px;
   font-family: "inter", Arial, Helvetica, sans-serif;
@@ -16,6 +16,10 @@
 
 .form__full-name:focus {
   outline: 0;
+}
+
+.form__full-name:invalid {
+  border-bottom: 1px solid red;
 }
 
 @media screen and (max-width: 879px) {
