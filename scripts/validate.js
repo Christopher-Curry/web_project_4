@@ -22,21 +22,21 @@ profilePopupName.addEventListener("submit", function (evt) {
 });
 
 profilePopupName.addEventListener("input", function () {
-  isValid(profilePopupName, "form__span_error");
+  isValid(profilePopupName, "form__div-error_inactive");
   toggleButtonState(profilePopupForm, profilePopupCreateButton);
 });
 
 profilePopupDescription.addEventListener("input", function () {
-  isValid(profilePopupDescription, "form__span_error");
+  isValid(profilePopupDescription, "form__div-error_inactive");
   toggleButtonState(profilePopupForm, profilePopupCreateButton);
 });
 
 newCardTitle.addEventListener("input", function () {
-  isValid(newCardTitle, "form__span_error");
+  isValid(newCardTitle, "form__div-error_inactive");
   toggleButtonState(newCardForm, newCardCreateButton);
 });
 
 newCardLink.addEventListener("input", function () {
-  isValid(newCardLink, "form__span_error");
+  isValid(newCardLink, "form__div-error_inactive");
   toggleButtonState(newCardForm, newCardCreateButton);
 });
