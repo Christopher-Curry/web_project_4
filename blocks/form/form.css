@@ -4,8 +4,6 @@
 @import url(./__close-image/form__close-image.css);
 @import url(./__description/form__description.css);
 @import url(./__container/form__container.css);
-@import url(./__full-name/__div-error/_inactive/form__div-error_inactive.css);
-@import url(./__full-name/__div-error/form__div-error.css);
 
 .form {
   position: fixed;

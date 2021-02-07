@@ -1,4 +1,6 @@
-.form__div-error {
+@import url(./_inactive/div-error_inactive.css);
+
+.div-error {
   font-family: "inter", Arial, Helvetica, sans-serif;
   color: #ff0000;
   margin-left: 38px;
