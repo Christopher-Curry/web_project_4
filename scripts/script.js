@@ -90,12 +90,27 @@ function createCard(newTitle, url) {
   return clone;
 }
 
+/* 
+  Hey Aygul Malikova, this was my best attempt to clean up the
+  keydown event listeners as I go. If there is a better way, 
+  let me know.
+*/
 function openPopup(popup) {
   popup.classList.add("popup_active");
+
+  function onCloseEscape(evt) {
+    if (evt.key === "Escape") {
+      closePopup(popup, onCloseEscape);
+    }
+  }
+  document.addEventListener("keydown", onCloseEscape);
 }
 
-function closePopup(popup) {
+function closePopup(popup, closeFunc) {
   popup.classList.remove("popup_active");
+  if (closeFunc) {
+    document.removeEventListener("keydown", closeFunc);
+  }
 }
 
 for (let i = 0; i < initialCards.length; i++) {
@@ -127,44 +142,22 @@ function createButton(evt) {
   closePopup(newCardPopup);
 }
 
-function toggleButtonState(form, buttonElement) {
-  if (!form.checkValidity()) {
-    buttonElement.classList.add("profile-popup__create-btn_disabled");
-  } else {
-    buttonElement.classList.remove("profile-popup__create-btn_disabled");
+function closePopupOverlay(evt, thisPopup) {
+  const clickedDomElement = evt.target;
+  if (clickedDomElement.classList.contains("popup")) {
+    closePopup(thisPopup);
   }
 }
 
-toggleButtonState(newCardForm, newCardCreateButton);
-
-document.body.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    closePopup(profilePopup);
-    closePopup(newCardPopup);
-    closePopup(imagePopup);
-  }
-});
-
-imagePopup.addEventListener("click", function (evt) {
-  let clickedDomElement = evt.target;
-  if (clickedDomElement.classList.contains("image")) {
-    closePopup(imagePopup);
-  }
-});
-
-newCardPopup.addEventListener("click", function (evt) {
-  let clickedDomElement = evt.target;
-  if (clickedDomElement.classList.contains("profile-popup")) {
-    closePopup(newCardPopup);
-  }
-});
-
-profilePopup.addEventListener("click", function (evt) {
-  let clickedDomElement = evt.target;
-  if (clickedDomElement.classList.contains("form")) {
-    closePopup(profilePopup);
-  }
-});
+imagePopup.addEventListener("click", (evt) =>
+  closePopupOverlay(evt, imagePopup)
+);
+newCardPopup.addEventListener("click", (evt) =>
+  closePopupOverlay(evt, newCardPopup)
+);
+profilePopup.addEventListener("click", (evt) =>
+  closePopupOverlay(evt, profilePopup)
+);
 
 editButton.addEventListener("click", () => showForm(profilePopup));
 profilePopupCloseButton.addEventListener("click", () =>
@@ -174,6 +167,6 @@ profilePopupCloseButton.addEventListener("click", () =>
 addButton.addEventListener("click", () => openPopup(newCardPopup));
 newCardCloseButton.addEventListener("click", () => closePopup(newCardPopup));
 imagePopupCloseButton.addEventListener("click", () => closePopup(imagePopup));
-newCardCreateButton.addEventListener("click", createButton);
+newCardPopup.addEventListener("submit", createButton);
 
 profilePopupForm.addEventListener("submit", saveButton);

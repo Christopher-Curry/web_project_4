@@ -1,11 +1,11 @@
 const showInputError = (element, classNameForSpan) => {
-  let errorMessage = document.getElementById(`${element.id}-error`);
+  const errorMessage = document.getElementById(`${element.id}-error`);
   errorMessage.classList.remove(classNameForSpan);
   errorMessage.textContent = element.validationMessage;
 };
 
 const hideInputError = (element, classNameForSpan) => {
-  let errorMessage = document.getElementById(`${element.id}-error`);
+  const errorMessage = document.getElementById(`${element.id}-error`);
   errorMessage.classList.add(classNameForSpan);
 };
 
@@ -20,12 +20,18 @@ const isValid = (element, classNameForSpan) => {
 function toggleButtonState(form, buttonElement, inactiveButtonClass) {
   if (!form.checkValidity()) {
     buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.disabled = true;
   } else {
     buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.disabled = false;
   }
 }
 
-toggleButtonState(newCardForm, newCardCreateButton);
+toggleButtonState(
+  newCardForm,
+  newCardCreateButton,
+  "profile-popup__create-btn_disabled"
+);
 
 function enableValidation({
   formSelector,
@@ -35,9 +41,9 @@ function enableValidation({
   inputErrorClass,
   errorClass,
 }) {
-  let form = document.querySelector(formSelector);
-  let submitButton = document.querySelector(submitButtonSelector);
-  let allInputs = document.querySelectorAll(inputSelector);
+  const form = document.querySelector(formSelector);
+  const submitButton = document.querySelector(submitButtonSelector);
+  const allInputs = document.querySelectorAll(inputSelector);
 
   allInputs.forEach((element) => {
     element.addEventListener("input", function () {
