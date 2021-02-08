@@ -90,27 +90,21 @@ function createCard(newTitle, url) {
   return clone;
 }
 
-/* 
-  Hey Aygul Malikova, this was my best attempt to clean up the
-  keydown event listeners as I go. If there is a better way, 
-  let me know.
-*/
+function onCloseEscape(evt) {
+  const popup = document.querySelector(".popup_active");
+  if (evt.key === "Escape") {
+    closePopup(popup);
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add("popup_active");
-
-  function onCloseEscape(evt) {
-    if (evt.key === "Escape") {
-      closePopup(popup, onCloseEscape);
-    }
-  }
   document.addEventListener("keydown", onCloseEscape);
 }
 
-function closePopup(popup, closeFunc) {
+function closePopup(popup) {
   popup.classList.remove("popup_active");
-  if (closeFunc) {
-    document.removeEventListener("keydown", closeFunc);
-  }
+  document.removeEventListener("keydown", onCloseEscape);
 }
 
 for (let i = 0; i < initialCards.length; i++) {
