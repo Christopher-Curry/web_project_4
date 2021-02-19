@@ -1,9 +1,11 @@
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
 const name = document.querySelector(".profile__title");
 const description = document.querySelector(".profile__subtitle");
 const editButton = document.querySelector(".profile__edit-btn");
 const addButton = document.querySelector(".profile__add-btn");
 const cardsList = document.querySelector(".elements__grid");
-const elements = document.querySelector(".elements");
 
 /* Profile DOM elements */
 const profilePopup = document.querySelector(".form");
@@ -17,15 +19,11 @@ const profilePopupCloseButton = document.querySelector(".popup__close-btn");
 const newCardPopup = document.querySelector(".profile-popup");
 const newCardTitle = document.querySelector(".popup__title");
 const newCardLink = document.querySelector(".popup__link");
-const newCardForm = document.querySelector(".popup__container");
-const newCardCreateButton = document.querySelector(".popup__create-btn");
 const newCardCloseButton = document.querySelector(".popup__close-btn_popup");
 
 /* Image Popup DOM elements */
 const imagePopup = document.querySelector(".image");
 const imagePopupCloseButton = document.querySelector(".popup__close-btn_form");
-const imagePopupTitle = document.querySelector(".image__title");
-const imagePopupSrc = document.querySelector(".image__popup");
 
 const initialCards = [
   {
@@ -54,48 +52,43 @@ const initialCards = [
   },
 ];
 
-function createCard(newTitle, url) {
-  const temp = document.querySelector(".card");
-  const clone = temp.content.cloneNode(true);
-
-  const title = clone.querySelector(".elements__title");
-  const currentPicture = clone.querySelector(".elements__image");
-
-  currentPicture.src = url;
-  currentPicture.alt = newTitle;
-  title.textContent = newTitle;
-
-  const heart = clone
-    .querySelector(".elements__like-btn")
-    .addEventListener("click", function (evt) {
-      evt.stopPropagation();
-      evt.target.classList.toggle("elements__like-btn_active");
-    });
-
-  clone
-    .querySelector(".elements__trash")
-    .addEventListener("click", function (evt) {
-      evt.target.closest(".elements__group").remove();
-    });
-
-  clone
-    .querySelector(".elements__image")
-    .addEventListener("click", function (evt) {
-      openPopup(imagePopup);
-
-      imagePopupTitle.textContent = newTitle;
-      imagePopupSrc.src = url;
-    });
-
-  return clone;
+for (let i = 0; i < initialCards.length; i++) {
+  const currentCard = initialCards[i];
+  let newCard = new Card(currentCard.newTitle, currentCard.url, ".card");
+  const clone = newCard.createCard();
+  cardsList.prepend(clone);
 }
-
 function onCloseEscape(evt) {
   const popup = document.querySelector(".popup_active");
   if (evt.key === "Escape") {
     closePopup(popup);
   }
 }
+
+const editFormValidator = new FormValidator(
+  {
+    inputSelector: ".form__input",
+    submitButtonSelector: ".form__save-btn",
+    inactiveButtonClass: "profile-popup__create-btn_disabled",
+    inputErrorClass: ".form__error",
+    errorClass: "div-error_inactive",
+  },
+  document.querySelector(".form__container")
+);
+editFormValidator.enableValidation();
+
+const addPopupValidator = new FormValidator(
+  {
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__create-btn",
+    inactiveButtonClass: "profile-popup__create-btn_disabled",
+    inputErrorClass: "profile-popup__error",
+    errorClass: "div-error_inactive",
+  },
+  document.querySelector(".popup__container")
+);
+
+addPopupValidator.enableValidation();
 
 function openPopup(popup) {
   popup.classList.add("popup_active");
@@ -107,10 +100,14 @@ function closePopup(popup) {
   document.removeEventListener("keydown", onCloseEscape);
 }
 
-for (let i = 0; i < initialCards.length; i++) {
-  const currentCard = initialCards[i];
-  const clone = createCard(currentCard.newTitle, currentCard.url);
-  cardsList.prepend(clone);
+function toggleButtonState(form, buttonElement, inactiveButtonClass) {
+  if (!form.checkValidity()) {
+    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.disabled = true;
+  } else {
+    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.disabled = false;
+  }
 }
 
 function showForm() {
