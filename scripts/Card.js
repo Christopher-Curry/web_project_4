@@ -1,3 +1,5 @@
+import { openPopup, imagePopup } from "./utils.js";
+
 class Card {
   constructor(newTitle, url, cardSelector) {
     this._newTitle = newTitle;
@@ -8,29 +10,25 @@ class Card {
   _addHeartListener(clone) {
     clone
       .querySelector(".elements__like-btn")
-      .addEventListener("click", function (evt) {
+      .addEventListener("click", (evt) => {
         evt.stopPropagation();
         evt.target.classList.toggle("elements__like-btn_active");
       });
   }
 
   _removeCard(clone) {
-    clone
-      .querySelector(".elements__trash")
-      .addEventListener("click", function (evt) {
-        evt.target.closest(".elements__group").remove();
-      });
+    clone.querySelector(".elements__trash").addEventListener("click", (evt) => {
+      evt.target.closest(".elements__group").remove();
+    });
   }
 
   _openImagePopup(clone) {
-    clone
-      .querySelector(".elements__image")
-      .addEventListener("click", function (evt) {
-        openPopup(imagePopup);
+    clone.querySelector(".elements__image").addEventListener("click", () => {
+      openPopup(imagePopup);
 
-        imagePopupTitle.textContent = this._newTitle;
-        imagePopupSrc.src = this._url;
-      });
+      imagePopupTitle.textContent = this._newTitle;
+      imagePopupSrc.src = this._url;
+    });
   }
 
   createCard() {

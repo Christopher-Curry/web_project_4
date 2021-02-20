@@ -1,5 +1,6 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+import { openPopup, closePopup, imagePopup } from "./utils.js";
 
 const name = document.querySelector(".profile__title");
 const description = document.querySelector(".profile__subtitle");
@@ -22,7 +23,7 @@ const newCardLink = document.querySelector(".popup__link");
 const newCardCloseButton = document.querySelector(".popup__close-btn_popup");
 
 /* Image Popup DOM elements */
-const imagePopup = document.querySelector(".image");
+
 const imagePopupCloseButton = document.querySelector(".popup__close-btn_form");
 
 const initialCards = [
@@ -58,12 +59,6 @@ for (let i = 0; i < initialCards.length; i++) {
   const clone = newCard.createCard();
   cardsList.prepend(clone);
 }
-function onCloseEscape(evt) {
-  const popup = document.querySelector(".popup_active");
-  if (evt.key === "Escape") {
-    closePopup(popup);
-  }
-}
 
 const editFormValidator = new FormValidator(
   {
@@ -89,16 +84,6 @@ const addPopupValidator = new FormValidator(
 );
 
 addPopupValidator.enableValidation();
-
-function openPopup(popup) {
-  popup.classList.add("popup_active");
-  document.addEventListener("keydown", onCloseEscape);
-}
-
-function closePopup(popup) {
-  popup.classList.remove("popup_active");
-  document.removeEventListener("keydown", onCloseEscape);
-}
 
 function toggleButtonState(form, buttonElement, inactiveButtonClass) {
   if (!form.checkValidity()) {
@@ -128,7 +113,8 @@ function createButton(evt) {
   evt.preventDefault();
   const newTitle = newCardTitle.value;
   const url = newCardLink.value;
-  const clone = createCard(newTitle, url);
+  const newCard = new Card(newTitle, url, ".card");
+  const clone = newCard.createCard();
   cardsList.prepend(clone);
   closePopup(newCardPopup);
 }
