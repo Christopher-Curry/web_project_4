@@ -1,6 +1,11 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import { openPopup, closePopup, imagePopup } from "./utils.js";
+import {
+  openPopup,
+  closePopup,
+  imagePopup,
+  toggleButtonState,
+} from "./utils.js";
 
 const name = document.querySelector(".profile__title");
 const description = document.querySelector(".profile__subtitle");
@@ -55,7 +60,7 @@ const initialCards = [
 
 for (let i = 0; i < initialCards.length; i++) {
   const currentCard = initialCards[i];
-  let newCard = new Card(currentCard.newTitle, currentCard.url, ".card");
+  const newCard = new Card(currentCard.newTitle, currentCard.url, ".card");
   const clone = newCard.createCard();
   cardsList.prepend(clone);
 }
@@ -85,31 +90,21 @@ const addPopupValidator = new FormValidator(
 
 addPopupValidator.enableValidation();
 
-function toggleButtonState(form, buttonElement, inactiveButtonClass) {
-  if (!form.checkValidity()) {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled = true;
-  } else {
-    buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.disabled = false;
-  }
-}
-
-function showForm() {
+function showProfilePopupForm() {
   profilePopupName.value = name.textContent;
   profilePopupDescription.value = description.textContent;
   toggleButtonState(profilePopupForm, profilePopupCreateButton);
   openPopup(profilePopup);
 }
 
-function saveButton(evt) {
+function handleEditProfileForm(evt) {
   evt.preventDefault();
   name.textContent = profilePopupName.value;
   description.textContent = profilePopupDescription.value;
   closePopup(profilePopup);
 }
 
-function createButton(evt) {
+function handleAddCardForm(evt) {
   evt.preventDefault();
   const newTitle = newCardTitle.value;
   const url = newCardLink.value;
@@ -136,7 +131,7 @@ profilePopup.addEventListener("click", (evt) =>
   closePopupOverlay(evt, profilePopup)
 );
 
-editButton.addEventListener("click", () => showForm(profilePopup));
+editButton.addEventListener("click", () => showProfilePopupForm(profilePopup));
 profilePopupCloseButton.addEventListener("click", () =>
   closePopup(profilePopup)
 );
@@ -144,6 +139,6 @@ profilePopupCloseButton.addEventListener("click", () =>
 addButton.addEventListener("click", () => openPopup(newCardPopup));
 newCardCloseButton.addEventListener("click", () => closePopup(newCardPopup));
 imagePopupCloseButton.addEventListener("click", () => closePopup(imagePopup));
-newCardPopup.addEventListener("submit", createButton);
+newCardPopup.addEventListener("submit", handleAddCardForm);
 
-profilePopupForm.addEventListener("submit", saveButton);
+profilePopupForm.addEventListener("submit", handleEditProfileForm);

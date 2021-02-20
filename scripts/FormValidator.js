@@ -1,3 +1,5 @@
+import { toggleButtonState } from "./utils.js";
+
 class FormValidator {
   constructor(settings, formElement) {
     this._inputSelector = settings.inputSelector;
@@ -28,16 +30,6 @@ class FormValidator {
     }
   }
 
-  _toggleButtonState(form, buttonElement, inactiveButtonClass) {
-    if (!form.checkValidity()) {
-      buttonElement.classList.add(inactiveButtonClass);
-      buttonElement.disabled = true;
-    } else {
-      buttonElement.classList.remove(inactiveButtonClass);
-      buttonElement.disabled = false;
-    }
-  }
-
   enableValidation() {
     const form = this._formElement;
     const submitButton = document.querySelector(this._submitButtonSelector);
@@ -46,7 +38,7 @@ class FormValidator {
     allInputs.forEach((element) => {
       element.addEventListener("input", () => {
         this._isValid(element, this._errorClass);
-        this._toggleButtonState(form, submitButton, this._inactiveButtonClass);
+        toggleButtonState(form, submitButton, this._inactiveButtonClass);
       });
     });
   }
