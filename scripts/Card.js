@@ -1,5 +1,8 @@
 import { openPopup, imagePopup } from "./utils.js";
 
+const imagePopupTitle = document.querySelector(".image__title");
+const imagePopupSrc = document.querySelector(".image__popup");
+
 class Card {
   constructor(newTitle, url, cardSelector) {
     this._newTitle = newTitle;
