@@ -1,11 +1,6 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import {
-  openPopup,
-  closePopup,
-  imagePopup,
-  toggleButtonState,
-} from "./utils.js";
+import { openPopup, closePopup, imagePopup } from "./utils.js";
 
 const name = document.querySelector(".profile__title");
 const description = document.querySelector(".profile__subtitle");
@@ -93,7 +88,10 @@ addPopupValidator.enableValidation();
 function showProfilePopupForm() {
   profilePopupName.value = name.textContent;
   profilePopupDescription.value = description.textContent;
-  toggleButtonState(profilePopupForm, profilePopupCreateButton);
+  editFormValidator.toggleButtonState(
+    profilePopupForm,
+    profilePopupCreateButton
+  );
   openPopup(profilePopup);
 }
 

@@ -16,13 +16,3 @@ export function closePopup(popup) {
   popup.classList.remove("popup_active");
   document.removeEventListener("keydown", onCloseEscape);
 }
-
-export function toggleButtonState(form, buttonElement, inactiveButtonClass) {
-  if (!form.checkValidity()) {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled = true;
-  } else {
-    buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.disabled = false;
-  }
-}
