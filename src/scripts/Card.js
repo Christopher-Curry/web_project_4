@@ -1,13 +1,11 @@
-import { openPopup, imagePopup } from "./utils.js";
-
-const imagePopupTitle = document.querySelector(".image__title");
-const imagePopupSrc = document.querySelector(".image__popup");
+import PopupWithImage from "./PopupWithImage.js";
 
 class Card {
-  constructor(newTitle, url, cardSelector) {
+  constructor(newTitle, url, cardSelector, handleCardClick) {
     this._newTitle = newTitle;
     this._url = url;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _addHeartListener(clone) {
@@ -27,10 +25,9 @@ class Card {
 
   _openImagePopup(clone) {
     clone.querySelector(".elements__image").addEventListener("click", () => {
-      openPopup(imagePopup);
-
-      imagePopupTitle.textContent = this._newTitle;
-      imagePopupSrc.src = this._url;
+      let myNewPopupWithImage = new PopupWithImage(".card-image-popup");
+      myNewPopupWithImage.setEventListeners();
+      myNewPopupWithImage.open(this._url, this._newTitle);
     });
   }
 

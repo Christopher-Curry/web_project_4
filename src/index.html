@@ -3,17 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="pages/index.css" />
     <title>Around the U.S.</title>
   </head>
   <body class="body">
     <div class="page">
       <header class="header">
-        <img
-          src="./images/Vector.svg"
-          alt="Around the U.S."
-          class="header__logo"
-        />
+        <img src=<%=require("./images/Vector.svg")%> alt="Around the U.S."
+        class="header__logo" />
       </header>
       <main>
         <section class="profile">
@@ -23,21 +19,15 @@
               <div class="profile__edit">
                 <h1 class="profile__title">Jacques Cousteau</h1>
                 <button type="button" class="profile__edit-btn">
-                  <img
-                    src="./images/Vector_edit.png"
-                    alt="pencil"
-                    class="profile__edit-sign"
-                  />
+                  <img src=<%=require("./images/Vector_edit.png")%> alt="pencil"
+                  class="profile__edit-sign" />
                 </button>
               </div>
               <p class="profile__subtitle">Explorer</p>
             </div>
             <button type="button" class="profile__add-btn">
-              <img
-                src="./images/Vector.png"
-                alt="plus sign"
-                class="profile__plus-sign"
-              />
+              <img src=<%=require("./images/Vector.png")%> alt="plus sign"
+              class="profile__plus-sign" />
             </button>
           </div>
         </section>
@@ -49,7 +39,7 @@
         <p>&#169; 2020 Around The U.S.</p>
       </footer>
     </div>
-    <div class="form popup">
+    <div class="form popup edit-profile-popup">
       <!-- Edit Profile Form -->
       <form class="form__container" method="GET" name="profile" novalidate>
         <h3 class="form__title">Edit profile</h3>
@@ -84,17 +74,19 @@
         </label>
         <button type="submit" class="form__save-btn">Save</button>
         <button class="popup__close-btn" type="reset">
-          <img
-            src="./images/closeIcon.png"
-            alt="Close Button"
-            class="form__close-image"
-          />
+          <img src=<%=require("./images/closeIcon.png")%> alt="Close Button"
+          class="form__close-image" />
         </button>
       </form>
     </div>
     <!-- New Card Form -->
-    <div class="profile-popup popup">
-      <form class="popup__container" method="GET" name="image" novalidate>
+    <div class="profile-popup popup add-card-popup">
+      <form
+        class="popup__container form__container"
+        method="GET"
+        name="image"
+        novalidate
+      >
         <h3 class="popup__header">New place</h3>
         <label>
           <input
@@ -125,15 +117,12 @@
         </label>
         <button type="submit" class="popup__create-btn">Create</button>
         <button class="popup__close-btn popup__close-btn_popup" type="reset">
-          <img
-            src="./images/closeIcon.png"
-            alt="Close Button"
-            class="popup__close-image"
-          />
+          <img src=<%=require("./images/closeIcon.png")%> alt="Close Button"
+          class="popup__close-image" />
         </button>
       </form>
     </div>
-    <div class="image popup">
+    <div class="image popup card-image-popup">
       <form class="image__container" method="GET" name="profile">
         <div>
           <img
@@ -144,28 +133,23 @@
           <h4 class="image__title">Lake Louise</h4>
         </div>
         <button class="popup__close-btn popup__close-btn_form" type="reset">
-          <img
-            src="./images/closeIcon.png"
-            alt="Close Button"
-            class="image__close-image"
-          />
+          <img src=<%=require("./images/closeIcon.png")%> alt="Close Button"
+          class="image__close-image" />
         </button>
       </form>
     </div>
     <template class="card">
       <li class="elements__group">
         <img
-          src="./images/andreas-weilguny-8rw95DOQxoQ-unsplash.jpg"
-          alt="rocky mountains"
-          class="elements__image"
-        />
-        <img src="./images/Trash.svg" alt="Trash Can" class="elements__trash" />
+        src=<%=require("./images/andreas-weilguny-8rw95DOQxoQ-unsplash.jpg")%>
+        alt="rocky mountains" class="elements__image" /> <img
+        src=<%=require("./images/Trash.svg")%> alt="Trash Can"
+        class="elements__trash" />
         <div class="elements__container">
           <h2 class="elements__title">Rocky Mountains</h2>
           <button type="button" class="elements__like-btn"></button>
         </div>
       </li>
     </template>
-    <script type="module" src="scripts/index.js"></script>
   </body>
 </html>
