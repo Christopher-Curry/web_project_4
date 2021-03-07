@@ -8,7 +8,6 @@ class UserInfo {
   }
 
   getUserInfo() {
-    debugger;
     return {
       userName: this.userName.textContent,
       userJob: this.userJob.textContent,

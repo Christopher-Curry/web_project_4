@@ -12,7 +12,7 @@ class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
 
-    let submitButton = this.popup.querySelector(".form__container");
+    let submitButton = this.popup.querySelector("form");
     submitButton.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this.formSubmission();
@@ -22,7 +22,7 @@ class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    let form = this.popup.querySelector(".form__container");
+    let form = this.popup.querySelector("form");
     form.reset();
   }
 }
