@@ -72,48 +72,57 @@ const addPopupValidator = new FormValidator(
 
 addPopupValidator.enableValidation();
 
-let userInfo = new UserInfo({
+const userInfo = new UserInfo({
   userName: ".profile__title",
   userJob: ".profile__subtitle",
 });
 
-// Make edit profile popup
-let editProfilePopup = new PopupWithForm(".edit-profile-popup", () => {
-  userInfo.setUserInfo(profilePopupName.value, profilePopupDescription.value);
-});
-editProfilePopup.setEventListeners();
-
-editButton.addEventListener("click", () => {
-  let values = userInfo.getUserInfo();
-  profilePopupName.value = values.userName;
-  profilePopupDescription.value = values.userJob;
-  editProfilePopup.open();
-});
-
-// Make add card popup
-let addCardPopup = new PopupWithForm(".add-card-popup", () => {
-  const newTitle = newCardTitle.value;
-  const url = newCardLink.value;
-  const newCard = new Card(newTitle, url, ".card");
-  const clone = newCard.createCard();
-  cardSection.addItem(clone);
-});
-addCardPopup.setEventListeners();
-
-addButton.addEventListener("click", () => {
-  addCardPopup.open();
-});
-
 // Make image popup
-let myNewPopupWithImage = new PopupWithImage(
+const myNewPopupWithImage = new PopupWithImage(
   ".card-image-popup",
   ".image__popup",
   ".image__title"
 );
 myNewPopupWithImage.setEventListeners();
 
+// Make edit profile popup
+const editProfilePopup = new PopupWithForm(
+  ".edit-profile-popup",
+  (obj) => userInfo.setUserInfo(obj.full_name, obj.about_me),
+  ".form__input"
+);
+editProfilePopup.setEventListeners();
+
+editButton.addEventListener("click", () => {
+  const values = userInfo.getUserInfo();
+  profilePopupName.value = values.userName;
+  profilePopupDescription.value = values.userJob;
+  editProfilePopup.open();
+});
+
+// Make add card popup
+const addCardPopup = new PopupWithForm(
+  ".add-card-popup",
+  (obj) => {
+    const newCard = new Card(
+      obj.link_title,
+      obj.url_address,
+      ".card",
+      myNewPopupWithImage.open
+    );
+    const clone = newCard.createCard();
+    cardSection.addItem(clone);
+  },
+  ".popup__input"
+);
+addCardPopup.setEventListeners();
+
+addButton.addEventListener("click", () => {
+  addCardPopup.open();
+});
+
 // Set up section
-let cardSection = new Section(
+const cardSection = new Section(
   {
     items: initialCards,
     renderer: (card) => {

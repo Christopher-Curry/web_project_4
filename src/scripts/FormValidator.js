@@ -48,6 +48,13 @@ class FormValidator {
       this._submitButtonSelector
     );
     const allInputs = this._formElement.querySelectorAll(this._inputSelector);
+    // Resets the form when you close it
+    this._formElement.addEventListener("reset", () => {
+      allInputs.forEach((inputElement) => {
+        this._hideInputError(inputElement, this._errorClass);
+        this.toggleButtonState(form, submitButton, this._inactiveButtonClass);
+      });
+    });
 
     allInputs.forEach((element) => {
       element.addEventListener("input", () => {
