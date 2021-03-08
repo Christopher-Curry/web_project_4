@@ -1,5 +1,3 @@
-import PopupWithImage from "./PopupWithImage.js";
-
 class Card {
   constructor(newTitle, url, cardSelector, handleCardClick) {
     this._newTitle = newTitle;
@@ -25,13 +23,7 @@ class Card {
 
   _openImagePopup(clone) {
     clone.querySelector(".elements__image").addEventListener("click", () => {
-      let myNewPopupWithImage = new PopupWithImage(
-        ".card-image-popup",
-        ".image__popup",
-        ".image__title"
-      );
-      myNewPopupWithImage.setEventListeners();
-      myNewPopupWithImage.open(this._url, this._newTitle);
+      this._handleCardClick(this._url, this._newTitle);
     });
   }
 

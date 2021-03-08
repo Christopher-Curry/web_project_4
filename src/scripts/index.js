@@ -3,6 +3,7 @@ import "../pages/index.css";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
 import Section from "./Section.js";
 import UserInfo from "./UserInfo.js";
 
@@ -43,18 +44,6 @@ const initialCards = [
     url: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
-// Set up section
-let cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (card) => {
-      const newCard = new Card(card.newTitle, card.url, ".card");
-      return newCard.createCard();
-    },
-  },
-  ".elements__grid"
-);
-cardSection.renderItems();
 
 // Set up form validation for editForm
 const editFormValidator = new FormValidator(
@@ -114,3 +103,29 @@ addCardPopup.setEventListeners();
 addButton.addEventListener("click", () => {
   addCardPopup.open();
 });
+
+// Make image popup
+let myNewPopupWithImage = new PopupWithImage(
+  ".card-image-popup",
+  ".image__popup",
+  ".image__title"
+);
+myNewPopupWithImage.setEventListeners();
+
+// Set up section
+let cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (card) => {
+      const newCard = new Card(
+        card.newTitle,
+        card.url,
+        ".card",
+        myNewPopupWithImage.open
+      );
+      return newCard.createCard();
+    },
+  },
+  ".elements__grid"
+);
+cardSection.renderItems();
