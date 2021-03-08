@@ -17,7 +17,7 @@ class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    super.setEventListeners();
+    super._setEventListeners();
 
     let submitButton = this.popup.querySelector("form");
     submitButton.addEventListener("submit", (evt) => {
@@ -27,8 +27,12 @@ class PopupWithForm extends Popup {
     });
   }
 
+  open() {
+    super._open();
+  }
+
   close() {
-    super.close();
+    super._close();
     let form = this.popup.querySelector("form");
     form.reset();
   }
