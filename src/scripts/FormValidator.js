@@ -10,13 +10,17 @@ class FormValidator {
   }
 
   _showInputError(element, classNameForSpan) {
-    const errorMessage = document.getElementById(`${element.id}-error`);
+    const errorMessage = this._formElement.querySelector(
+      `#${element.id}-error`
+    );
     errorMessage.classList.remove(classNameForSpan);
     errorMessage.textContent = element.validationMessage;
   }
 
   _hideInputError(element, classNameForSpan) {
-    const errorMessage = document.getElementById(`${element.id}-error`);
+    const errorMessage = this._formElement.querySelector(
+      `#${element.id}-error`
+    );
     errorMessage.classList.add(classNameForSpan);
   }
 
@@ -40,8 +44,10 @@ class FormValidator {
 
   enableValidation() {
     const form = this._formElement;
-    const submitButton = document.querySelector(this._submitButtonSelector);
-    const allInputs = document.querySelectorAll(this._inputSelector);
+    const submitButton = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
+    const allInputs = this._formElement.querySelectorAll(this._inputSelector);
 
     allInputs.forEach((element) => {
       element.addEventListener("input", () => {

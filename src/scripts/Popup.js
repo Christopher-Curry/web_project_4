@@ -25,7 +25,7 @@ class Popup {
   }
 
   setEventListeners() {
-    let closeButton = this.popup.querySelector(".popup__close-btn");
+    const closeButton = this.popup.querySelector(".popup__close-btn");
     closeButton.addEventListener("click", this.close);
     this.popup.addEventListener("click", this._closePopupOverlay);
   }
