@@ -6,7 +6,6 @@ class PopupWithForm extends Popup {
     this._formSubmission = formSubmission;
     this._inputClassSelector = inputClassSelector;
     this.close = this.close.bind(this);
-    this.open = this.open.bind(this);
     this.setEventListeners = this.setEventListeners.bind(this);
   }
   _getInputValues() {
@@ -21,22 +20,18 @@ class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    super._setEventListeners();
+    super.setEventListeners();
 
-    const submitButton = this.popup.querySelector("form");
-    submitButton.addEventListener("submit", (evt) => {
+    const submitForm = this.popup.querySelector("form");
+    submitForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._formSubmission(this._getInputValues());
       this.close();
     });
   }
 
-  open() {
-    super._open();
-  }
-
   close() {
-    super._close();
+    super.close();
     const form = this.popup.querySelector("form");
     form.reset();
   }

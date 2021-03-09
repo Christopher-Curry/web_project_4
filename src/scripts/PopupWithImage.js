@@ -6,25 +6,16 @@ class PopupWithImage extends Popup {
     this._imageSelector = imageSelector;
     this._titleSelector = titleSelector;
 
-    this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.setEventListeners = this.setEventListeners.bind(this);
   }
 
-  setEventListeners() {
-    super._setEventListeners();
-  }
-
-  close() {
-    super._close();
-  }
-
   open(src, textContent) {
-    super._open();
-    let image = this.popup.querySelector(this._imageSelector);
+    super.open();
+    const image = this.popup.querySelector(this._imageSelector);
     image.src = src;
 
-    let title = this.popup.querySelector(this._titleSelector);
+    const title = this.popup.querySelector(this._titleSelector);
     title.textContent = textContent;
   }
 }

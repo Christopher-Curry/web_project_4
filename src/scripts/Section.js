@@ -7,8 +7,8 @@ class Section {
 
   renderItems() {
     for (let i = 0; i < this._initialArray.length; i++) {
-      let curVal = this._initialArray[i];
-      let element = this._renderer(curVal);
+      const curVal = this._initialArray[i];
+      const element = this._renderer(curVal);
       this.addItem(element);
     }
   }

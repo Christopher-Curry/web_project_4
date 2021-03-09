@@ -3,7 +3,6 @@ class UserInfo {
     this.userName = document.querySelector(userName);
     this.userJob = document.querySelector(userJob);
 
-    this.getUserInfo = this.getUserInfo.bind(this);
     this.setUserInfo = this.setUserInfo.bind(this);
   }
 
