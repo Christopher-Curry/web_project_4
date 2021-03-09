@@ -48,10 +48,9 @@ const initialCards = [
 // Set up form validation for editForm
 const editFormValidator = new FormValidator(
   {
-    inputSelector: ".form__input",
-    submitButtonSelector: ".form__save-btn",
-    inactiveButtonClass: "profile-popup__create-btn_disabled",
-    inputErrorClass: ".form__error",
+    inputSelector: ".input",
+    submitButtonSelector: ".save-btn",
+    inactiveButtonClass: "save-btn_disabled",
     errorClass: "div-error_inactive",
   },
   document.querySelector(".form__container")
@@ -61,10 +60,9 @@ editFormValidator.enableValidation();
 // Set up form validation for addForm
 const addPopupValidator = new FormValidator(
   {
-    inputSelector: ".popup__input",
-    submitButtonSelector: ".popup__create-btn",
-    inactiveButtonClass: "profile-popup__create-btn_disabled",
-    inputErrorClass: "profile-popup__error",
+    inputSelector: ".input",
+    submitButtonSelector: ".save-btn",
+    inactiveButtonClass: "save-btn_disabled",
     errorClass: "div-error_inactive",
   },
   document.querySelector(".popup__container")
@@ -89,7 +87,7 @@ myNewPopupWithImage.setEventListeners();
 const editProfilePopup = new PopupWithForm(
   ".edit-profile-popup",
   (obj) => userInfo.setUserInfo(obj.full_name, obj.about_me),
-  ".form__input"
+  ".input"
 );
 editProfilePopup.setEventListeners();
 
@@ -113,7 +111,7 @@ const addCardPopup = new PopupWithForm(
     const clone = newCard.createCard();
     cardSection.addItem(clone);
   },
-  ".popup__input"
+  ".input"
 );
 addCardPopup.setEventListeners();
 

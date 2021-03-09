@@ -47,7 +47,7 @@
           <input
             id="full-name"
             type="text"
-            class="form__full-name form__input"
+            class="form__full-name input"
             placeholder="Name"
             name="full_name"
             minlength="2"
@@ -60,7 +60,7 @@
           <input
             id="form__description"
             type="text"
-            class="form__description form__input"
+            class="form__description input"
             placeholder="About me"
             name="about_me"
             minlength="2"
@@ -72,7 +72,7 @@
             class="div-error div-error_inactive"
           ></div>
         </label>
-        <button type="submit" class="form__save-btn">Save</button>
+        <button type="submit" class="save-btn">Save</button>
         <button class="popup__close-btn" type="reset">
           <img src=<%=require("./images/closeIcon.png")%> alt="Close Button"
           class="form__close-image" />
@@ -87,7 +87,7 @@
           <input
             id="popup__title"
             type="text"
-            class="popup__title popup__input"
+            class="popup__title input"
             placeholder="Title"
             name="link_title"
             minlength="1"
@@ -103,14 +103,14 @@
           <input
             id="url"
             type="url"
-            class="popup__link popup__input"
+            class="popup__link input"
             placeholder="Image link"
             name="url_address"
             required
           />
           <div id="url-error" class="div-error div-error_inactive"></div>
         </label>
-        <button type="submit" class="popup__create-btn">Create</button>
+        <button type="submit" class="save-btn">Create</button>
         <button class="popup__close-btn popup__close-btn_popup" type="reset">
           <img src=<%=require("./images/closeIcon.png")%> alt="Close Button"
           class="popup__close-image" />

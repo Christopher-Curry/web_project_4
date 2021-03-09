@@ -1,4 +1,6 @@
-.form__save-btn {
+@import url("./__disabled/save-btn__disabled.css");
+
+.save-btn {
   background-color: black;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -11,13 +13,13 @@
   margin-top: 26px;
 }
 
-.form__save-btn:hover {
+.save-btn:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 
 @media screen and (max-width: 879px) {
-  .form__save-btn {
+  .save-btn {
     width: 238px;
     height: 46px;
     margin-left: 22px;
