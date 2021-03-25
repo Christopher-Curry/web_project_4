@@ -17,13 +17,13 @@
             <div class="profile__avatar"></div>
             <div class="profile__form">
               <div class="profile__edit">
-                <h1 class="profile__title">Jacques Cousteau</h1>
+                <h1 class="profile__title"></h1>
                 <button type="button" class="profile__edit-btn">
                   <img src=<%=require("./images/Vector_edit.png")%> alt="pencil"
                   class="profile__edit-sign" />
                 </button>
               </div>
-              <p class="profile__subtitle">Explorer</p>
+              <p class="profile__subtitle"></p>
             </div>
             <button type="button" class="profile__add-btn">
               <img src=<%=require("./images/Vector.png")%> alt="plus sign"
@@ -79,6 +79,22 @@
         </button>
       </form>
     </div>
+    <div class="delete-confirm popup edit-profile-popup" data-image-id="">
+      <!-- Delete Confirmation Form -->
+      <form
+        class="delete-confirm__container"
+        method="GET"
+        name="profile"
+        novalidate
+      >
+        <h3 class="delete-confirm__title">Are you sure?</h3>
+        <button type="submit" class="save-btn">Yes</button>
+        <button class="popup__close-btn" type="reset">
+          <img src=<%=require("./images/closeIcon.png")%> alt="Close Button"
+          class="form__close-image" />
+        </button>
+      </form>
+    </div>
     <!-- New Card Form -->
     <div class="profile-popup popup add-card-popup">
       <form class="popup__container" method="GET" name="image" novalidate>
@@ -117,6 +133,34 @@
         </button>
       </form>
     </div>
+    <!-- profile picture form changes Avatar-->
+    <div class="profile-picture popup add-card-popup">
+      <form
+        class="profile-picture__container"
+        method="GET"
+        name="image"
+        novalidate
+      >
+        <h3 class="profile-picture__header">Change profile picture</h3>
+        <label>
+          <input
+            id="url"
+            type="url"
+            class="popup__link input"
+            placeholder="Image link"
+            name="url_address"
+            required
+          />
+          <div id="url-error" class="div-error div-error_inactive"></div>
+        </label>
+        <button type="submit" class="save-btn">Save</button>
+        <button class="popup__close-btn popup__close-btn_popup" type="reset">
+          <img src=<%=require("./images/closeIcon.png")%> alt="Close Button"
+          class="popup__close-image" />
+        </button>
+      </form>
+    </div>
+    <!-- Picture popup form-->
     <div class="image popup card-image-popup">
       <form class="image__container" method="GET" name="profile">
         <div>
@@ -142,7 +186,10 @@
         class="elements__trash" />
         <div class="elements__container">
           <h2 class="elements__title">Rocky Mountains</h2>
-          <button type="button" class="elements__like-btn"></button>
+          <div>
+            <button type="button" class="elements__like-btn"></button>
+            <div class="elements__counter"></div>
+          </div>
         </div>
       </li>
     </template>

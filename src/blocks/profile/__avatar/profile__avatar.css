@@ -1,6 +1,7 @@
 .profile__avatar {
   width: 120px;
   height: 120px;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
   border-radius: 50%;
@@ -14,4 +15,18 @@
   .profile__avatar {
     margin: 0 auto;
   }
+}
+
+.profile__avatar:hover {
+  position: relative;
+  opacity: 0.5;
+  background: url("../../../images/MyVector.svg");
+  background-position: center;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  margin-left: calc(50% - 40px);
+  margin-top: calc(50% - 40px);
+  z-index: 5;
 }

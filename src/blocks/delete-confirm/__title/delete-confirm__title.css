@@ -1,0 +1,22 @@
+.delete-confirm__title {
+  margin-top: 20px;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin-left: 36px;
+  width: 358px;
+  padding-bottom: 10px;
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 19px;
+  font-weight: 900;
+  padding-left: 2px;
+}
+
+@media screen and (max-width: 879px) {
+  .delete-confirm__title {
+    width: 238px;
+    margin-left: 22px;
+  }
+}

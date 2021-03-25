@@ -13,3 +13,5 @@
 @import url(../blocks/popup/_active/popup_active.css);
 @import url(../blocks/div-error/div-error.css);
 @import url(../blocks/save-btn/save-btn.css);
+@import url(../blocks/delete-confirm/delete-confirm.css);
+@import url(../blocks/profile-picture/profile-picture.css);

@@ -1,4 +1,6 @@
 .elements__like-btn {
+  padding-bottom: 30px;
+  padding-top: 10px;
   padding-right: 55px;
   padding-left: 0;
   background-image: url(../../../images/Vector_heart_empty.svg);
