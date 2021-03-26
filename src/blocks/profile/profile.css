@@ -8,7 +8,7 @@
 @import url(./__edit-btn/profile__edit-btn.css);
 @import url(./__subtitle/profile__subtitle.css);
 @import url(./__plus-sign/profile__plus-sign.css);
-
+@import url(./__inner/profile__inner.css);
 .profile {
   max-width: 880px;
   margin: 0 auto;

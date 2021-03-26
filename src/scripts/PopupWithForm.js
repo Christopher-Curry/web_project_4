@@ -19,19 +19,31 @@ class PopupWithForm extends Popup {
     return this._formValues;
   }
 
+  startSaving() {
+    const button = this.popup.querySelector(".save-btn");
+    button.textContent = "Saving...";
+  }
+
+  stopSaving() {
+    const button = this.popup.querySelector(".save-btn");
+    button.textContent = "Save";
+  }
+
   setEventListeners() {
     super.setEventListeners();
 
     const submitForm = this.popup.querySelector("form");
     submitForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      this.startSaving();
       this._formSubmission(this._getInputValues());
-      this.close();
+      // this.close();
     });
   }
 
   close() {
     super.close();
+    this.stopSaving();
     const form = this.popup.querySelector("form");
     form.reset();
   }

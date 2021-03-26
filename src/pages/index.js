@@ -2,7 +2,6 @@ import "regenerator-runtime/runtime.js";
 import "../pages/index.css";
 import { Card } from "../scripts/Card.js";
 import { FormValidator } from "../scripts/FormValidator.js";
-import Popup from "../scripts/Popup.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import Section from "../scripts/Section.js";
@@ -19,6 +18,7 @@ const api = new Api({
 const editButton = document.querySelector(".profile__edit-btn");
 const addButton = document.querySelector(".profile__add-btn");
 const deleteConfirm = document.querySelector(".delete-confirm");
+const profileAvatar = document.querySelector(".profile__avatar");
 
 /* Profile DOM elements */
 const profilePopupName = document.querySelector(".form__full-name");
@@ -56,6 +56,7 @@ const userInfo = new UserInfo({
 
 api.getUserInfo().then((res) => {
   userInfo.setUserInfo(res.name, res.about);
+  profileAvatar.style.backgroundImage = `url(${res.avatar})`;
 });
 
 // Make image popup
@@ -70,10 +71,10 @@ myNewPopupWithImage.setEventListeners();
 const editProfilePopup = new PopupWithForm(
   ".edit-profile-popup",
   (obj) => {
-    // userInfo.setUserInfo(obj.full_name, obj.about_me);
-    api
-      .editProfile(obj.full_name, obj.about_me)
-      .then((res) => userInfo.setUserInfo(res.name, res.about));
+    api.editProfile(obj.full_name, obj.about_me).then((res) => {
+      userInfo.setUserInfo(res.name, res.about);
+      editProfilePopup.close();
+    });
   },
   ".input"
 );
@@ -91,17 +92,19 @@ const deletePopup = new PopupWithForm(
   ".delete-confirm",
   () => {
     const imageId = deleteConfirm.getAttribute("data-image-id");
+    console.log(imageId);
     api.removeCard(imageId).then((res) => {
-      if (res.message) {
+      console.log(res);
+      if (res && res.message) {
         document.querySelector(`[data-card-id="${imageId}"]`).remove();
       }
+      deletePopup.close();
     });
   },
   ".input"
 );
 deletePopup.setEventListeners();
 
-const profileAvatar = document.querySelector(".profile__avatar");
 profileAvatar.addEventListener("click", () => {
   profilePicture.open();
 });
@@ -110,6 +113,7 @@ const profilePicture = new PopupWithForm(
   (obj) => {
     api.editProfileAvatar(obj.url_address).then((res) => {
       profileAvatar.style.backgroundImage = `url(${res.avatar})`;
+      profilePicture.close();
     });
   },
   ".input"
@@ -163,7 +167,10 @@ api.getCardList().then((cardData) => {
             card,
             ".card",
             myNewPopupWithImage.open,
-            deletePopup.open,
+            (imageId) => {
+              deleteConfirm.setAttribute("data-image-id", imageId);
+              deletePopup.open();
+            },
             myID,
             (id, heartNode) => {
               if (heartNode.classList.contains("elements__like-btn_active")) {
@@ -181,6 +188,7 @@ api.getCardList().then((cardData) => {
           );
           const clone = newCard.createCard();
           cardSection.addItem(clone);
+          addCardPopup.close();
         });
     },
     ".input"

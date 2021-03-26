@@ -5,7 +5,6 @@
   position: relative;
   overflow: hidden;
   border-radius: 50%;
-  background: url(../../../images/jacques.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,15 +17,6 @@
 }
 
 .profile__avatar:hover {
-  position: relative;
   opacity: 0.5;
-  background: url("../../../images/MyVector.svg");
-  background-position: center;
-  background-size: contain;
-  width: 40px;
-  height: 40px;
-  border-radius: 0;
-  margin-left: calc(50% - 40px);
-  margin-top: calc(50% - 40px);
   z-index: 5;
 }
