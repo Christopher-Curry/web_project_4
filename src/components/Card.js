@@ -44,6 +44,11 @@ class Card {
     });
   }
 
+  setLike(heartNode, likeCount) {
+    heartNode.classList.toggle("elements__like-btn_active");
+    heartNode.nextElementSibling.textContent = likeCount;
+  }
+
   createCard() {
     const temp = document.querySelector(this._cardSelector);
 

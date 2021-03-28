@@ -1,12 +1,12 @@
 import "regenerator-runtime/runtime.js";
 import "../pages/index.css";
-import { Card } from "../scripts/Card.js";
-import { FormValidator } from "../scripts/FormValidator.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import Section from "../scripts/Section.js";
-import UserInfo from "../scripts/UserInfo.js";
-import Api from "../scripts/Api.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 
 const myID = "23eef59184749de87a828e68";
 
@@ -54,10 +54,15 @@ const userInfo = new UserInfo({
   userJob: ".profile__subtitle",
 });
 
-api.getUserInfo().then((res) => {
-  userInfo.setUserInfo(res.name, res.about);
-  profileAvatar.style.backgroundImage = `url(${res.avatar})`;
-});
+api
+  .getUserInfo()
+  .then((res) => {
+    userInfo.setUserInfo(res.name, res.about);
+    profileAvatar.style.backgroundImage = `url(${res.avatar})`;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // Make image popup
 const myNewPopupWithImage = new PopupWithImage(
@@ -71,10 +76,15 @@ myNewPopupWithImage.setEventListeners();
 const editProfilePopup = new PopupWithForm(
   ".edit-profile-popup",
   (obj) => {
-    api.editProfile(obj.full_name, obj.about_me).then((res) => {
-      userInfo.setUserInfo(res.name, res.about);
-      editProfilePopup.close();
-    });
+    api
+      .editProfile(obj.full_name, obj.about_me)
+      .then((res) => {
+        userInfo.setUserInfo(res.name, res.about);
+        editProfilePopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   ".input"
 );
@@ -92,14 +102,17 @@ const deletePopup = new PopupWithForm(
   ".delete-confirm",
   () => {
     const imageId = deleteConfirm.getAttribute("data-image-id");
-    console.log(imageId);
-    api.removeCard(imageId).then((res) => {
-      console.log(res);
-      if (res && res.message) {
-        document.querySelector(`[data-card-id="${imageId}"]`).remove();
-      }
-      deletePopup.close();
-    });
+    api
+      .removeCard(imageId)
+      .then((res) => {
+        if (res && res.message) {
+          document.querySelector(`[data-card-id="${imageId}"]`).remove();
+        }
+        deletePopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   ".input"
 );
@@ -111,91 +124,91 @@ profileAvatar.addEventListener("click", () => {
 const profilePicture = new PopupWithForm(
   ".profile-picture",
   (obj) => {
-    api.editProfileAvatar(obj.url_address).then((res) => {
-      profileAvatar.style.backgroundImage = `url(${res.avatar})`;
-      profilePicture.close();
-    });
+    api
+      .editProfileAvatar(obj.url_address)
+      .then((res) => {
+        profileAvatar.style.backgroundImage = `url(${res.avatar})`;
+        profilePicture.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   ".input"
 );
 profilePicture.setEventListeners();
 
+function makeCard(card) {
+  const newCard = new Card(
+    card,
+    ".card",
+    myNewPopupWithImage.open,
+    (imageId) => {
+      deleteConfirm.setAttribute("data-image-id", imageId);
+      deletePopup.open();
+    },
+    myID,
+    (id, heartNode) => {
+      if (heartNode.classList.contains("elements__like-btn_active")) {
+        api
+          .removeLike(id)
+          .then((res) => {
+            newCard.setLike(heartNode, res.likes.length);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        api
+          .addLike(id)
+          .then((res) => {
+            newCard.setLike(heartNode, res.likes.length);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+  );
+  return newCard.createCard();
+}
+
 // Set up section
-api.getCardList().then((cardData) => {
-  const cardSection = new Section(
-    {
-      items: cardData,
-      renderer: (card) => {
-        const newCard = new Card(
-          card,
-          ".card",
-          myNewPopupWithImage.open,
-          (imageId) => {
-            deleteConfirm.setAttribute("data-image-id", imageId);
-            deletePopup.open();
-          },
-          myID,
-          (id, heartNode) => {
-            if (heartNode.classList.contains("elements__like-btn_active")) {
-              api.removeLike(id).then((res) => {
-                heartNode.classList.toggle("elements__like-btn_active");
-                heartNode.nextElementSibling.textContent = res.likes.length;
-              });
-            } else {
-              api.addLike(id).then((res) => {
-                heartNode.classList.toggle("elements__like-btn_active");
-                heartNode.nextElementSibling.textContent = res.likes.length;
-              });
-            }
-          }
-        );
-        return newCard.createCard();
+api
+  .getCardList()
+  .then((cardData) => {
+    const cardSection = new Section(
+      {
+        items: cardData,
+        renderer: (card) => makeCard(card),
       },
-    },
-    ".elements__grid"
-  );
-  cardSection.renderItems();
+      ".elements__grid"
+    );
+    cardSection.renderItems();
 
-  // Make add card popup
-  const addCardPopup = new PopupWithForm(
-    ".add-card-popup",
-    (obj) => {
-      api
-        .addCard({ name: obj.link_title, link: obj.url_address })
-        .then((card) => {
-          const newCard = new Card(
-            card,
-            ".card",
-            myNewPopupWithImage.open,
-            (imageId) => {
-              deleteConfirm.setAttribute("data-image-id", imageId);
-              deletePopup.open();
-            },
-            myID,
-            (id, heartNode) => {
-              if (heartNode.classList.contains("elements__like-btn_active")) {
-                api.removeLike(id).then((res) => {
-                  heartNode.classList.toggle("elements__like-btn_active");
-                  heartNode.nextElementSibling.textContent = res.likes.length;
-                });
-              } else {
-                api.addLike(id).then((res) => {
-                  heartNode.classList.toggle("elements__like-btn_active");
-                  heartNode.nextElementSibling.textContent = res.likes.length;
-                });
-              }
-            }
-          );
-          const clone = newCard.createCard();
-          cardSection.addItem(clone);
-          addCardPopup.close();
-        });
-    },
-    ".input"
-  );
-  addCardPopup.setEventListeners();
+    // Make add card popup
+    const addCardPopup = new PopupWithForm(
+      ".add-card-popup",
+      (obj) => {
+        api
+          .addCard({ name: obj.link_title, link: obj.url_address })
+          .then((card) => {
+            const clone = makeCard(card);
+            cardSection.addItem(clone);
+            addCardPopup.close();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
+      ".input"
+    );
+    addCardPopup.setEventListeners();
 
-  addButton.addEventListener("click", () => {
-    addCardPopup.open();
+    addButton.addEventListener("click", () => {
+      addCardPopup.open();
+    });
+  })
+  .catch((err) => {
+    console.log(err);
   });
-});
