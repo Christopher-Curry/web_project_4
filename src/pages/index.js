@@ -8,8 +8,6 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 
-const myID = "23eef59184749de87a828e68";
-
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-7",
   authToken: "1df31a03-cf15-47ed-8f91-09c0cea642ae",
@@ -53,16 +51,6 @@ const userInfo = new UserInfo({
   userName: ".profile__title",
   userJob: ".profile__subtitle",
 });
-
-api
-  .getUserInfo()
-  .then((res) => {
-    userInfo.setUserInfo(res.name, res.about);
-    profileAvatar.style.backgroundImage = `url(${res.avatar})`;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 // Make image popup
 const myNewPopupWithImage = new PopupWithImage(
@@ -138,7 +126,7 @@ const profilePicture = new PopupWithForm(
 );
 profilePicture.setEventListeners();
 
-function makeCard(card) {
+function makeCard(card, myID) {
   const newCard = new Card(
     card,
     ".card",
@@ -173,41 +161,51 @@ function makeCard(card) {
   return newCard.createCard();
 }
 
-// Set up section
 api
-  .getCardList()
-  .then((cardData) => {
-    const cardSection = new Section(
-      {
-        items: cardData,
-        renderer: (card) => makeCard(card),
-      },
-      ".elements__grid"
-    );
-    cardSection.renderItems();
+  .getUserInfo()
+  .then((res) => {
+    userInfo.setUserInfo(res.name, res.about);
+    profileAvatar.style.backgroundImage = `url(${res.avatar})`;
 
-    // Make add card popup
-    const addCardPopup = new PopupWithForm(
-      ".add-card-popup",
-      (obj) => {
-        api
-          .addCard({ name: obj.link_title, link: obj.url_address })
-          .then((card) => {
-            const clone = makeCard(card);
-            cardSection.addItem(clone);
-            addCardPopup.close();
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      },
-      ".input"
-    );
-    addCardPopup.setEventListeners();
+    // Set up section
+    api
+      .getCardList()
+      .then((cardData) => {
+        const cardSection = new Section(
+          {
+            items: cardData,
+            renderer: (card) => makeCard(card, res._id),
+          },
+          ".elements__grid"
+        );
+        cardSection.renderItems();
 
-    addButton.addEventListener("click", () => {
-      addCardPopup.open();
-    });
+        // Make add card popup
+        const addCardPopup = new PopupWithForm(
+          ".add-card-popup",
+          (obj) => {
+            api
+              .addCard({ name: obj.link_title, link: obj.url_address })
+              .then((card) => {
+                const clone = makeCard(card, res._id);
+                cardSection.addItem(clone);
+                addCardPopup.close();
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          },
+          ".input"
+        );
+        addCardPopup.setEventListeners();
+
+        addButton.addEventListener("click", () => {
+          addCardPopup.open();
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   })
   .catch((err) => {
     console.log(err);
